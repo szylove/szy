@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #main {
+            position: absolute;
+            top: 200px;
+            left: 35%;
+            cursor: pointer;
+        }
+
+            #main:hover {
+            }
+    </style>
+    <script language="JavaScript" type="text/javascript" src="jquery.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="canvas_bg.js"></script>
+</head>
+<body>
+    
+        <canvas id="c" style="position: absolute;z-index: -1;text-align: center;"></canvas>
+        <div id="main">
+            <div id="=content">
+                <div id="code">
+                    darling,<br />
+                    I want to say:<br />
+                    Baby, I love you forever.<br />
+                </div>
+                <div id="words">
+
+                    <div id="messages" style="display: block;">
+                        宋振宇跟仝年在一起已经
+                        <div id="elapseClock"></div>
+                    </div>
+                    <div id="loveu" style="display: block;">
+                        爱你一生一世。<br />
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function timeElapse(date) {
+                var current = Date();
+                var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+                var days = Math.floor(seconds / (3600 * 24));
+                seconds = seconds % (3600 * 24);
+                var hours = Math.floor(seconds / 3600);
+                if (hours < 10) {
+                    hours = "0" + hours;
+                }
+                seconds = seconds % 3600;
+                var minutes = Math.floor(seconds / 60);
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
+                seconds = seconds % 60;
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
+                var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds";
+                document.getElementById("elapseClock").innerHTML = result;
+            }
+            var together = new Date();
+            together.setFullYear(2018, 11, 4);
+            together.setHours(0);
+            together.setMinutes(0);
+            together.setSeconds(0);
+            together.setMilliseconds(0);
+            timeElapse(together);
+            setInterval(function () {
+                timeElapse(together);
+            }, 500);
+        </script>
+        
+</body>
+</html>
